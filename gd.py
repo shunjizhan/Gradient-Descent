@@ -32,12 +32,20 @@ class GradientDescent:
         # ax.yaxis.set_major_locator(ticker.MaxNLocator(integer=True))
         plt.xlabel('iterations')
         plt.ylabel('f(x)')
+
         X = np.arange(50)
-        plt.plot(X, errors_GD, 'r-', X, errors_NAGD, 'b-')
+        plt.plot(X, errors_GD, 'r-', label='GD')
+        plt.plot(X, errors_NAGD, 'b-', label='NAGD')
+        plt.legend(loc='upper right')
         plt.show()
-        plt.plot(errors_SGD)
+        plt.plot(errors_SGD, label='SGD')
+        plt.legend(loc='upper right')
         plt.show()
 
+    # I view the function f(x) as the squared error function for:
+    # Y = X*beta, so in gradient descent we calculates beta
+    # self.sqr_error() calculate f(x) in the question, which is:
+    # (2/n)*(X*beta - b)
     def GD(self, beta):
         step = 0.025
         errors = []
